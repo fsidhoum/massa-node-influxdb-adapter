@@ -1,0 +1,21 @@
+{
+  "name": "massa-node-influxdb-adapter",
+  "version": "0.0.1",
+  "description": "",
+  "author": {
+    "email": "f.sidhoum@hotmail.fr",
+    "name": "Fouad Sidhoum"
+  },
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.js\" \"test/**/*.js\"",
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.5.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2"
+  }
+}
