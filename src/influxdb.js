@@ -20,6 +20,7 @@ const saveData = (data) => {
   statusPoint.uintField('current_cycle', data.status.current_cycle);
   statusPoint.uintField('in_connection_count', data.status.in_connection_count);
   statusPoint.uintField('out_connection_count', data.status.out_connection_count);
+  statusPoint.stringField('node_ip', data.status.node_ip);
   statusPoint.stringField('version', data.status.version);
 
   const walletInfoPoint = new Point('wallet_info');
@@ -30,6 +31,9 @@ const saveData = (data) => {
   walletInfoPoint.uintField('active_rolls', data.wallet_info.active_rolls);
   walletInfoPoint.uintField('candidate_rolls', data.wallet_info.candidate_rolls);
   walletInfoPoint.uintField('final_rolls', data.wallet_info.final_rolls);
+  walletInfoPoint.uintField('production_ok', data.wallet_info.production_ok);
+  walletInfoPoint.uintField('production_nok', data.wallet_info.production_nok);
+  walletInfoPoint.floatField('production_ok_ratio', data.wallet_info.production_ok_ratio);
 
   const writeApi = client.getWriteApi(org, bucket);
   writeApi.writePoints([statusPoint, walletInfoPoint]);
