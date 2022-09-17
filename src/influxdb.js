@@ -16,7 +16,7 @@ const saveData = (data) => {
   const statusPoint = new Point('status');
 
   statusPoint.uintField('connected_node_count', data.status.connected_node_count);
-  statusPoint.uintField('staker_count', data.status.staker_count);
+  statusPoint.uintField('active_node_count', data.status.active_node_count);
   statusPoint.uintField('current_cycle', data.status.current_cycle);
   statusPoint.uintField('in_connection_count', data.status.in_connection_count);
   statusPoint.uintField('out_connection_count', data.status.out_connection_count);
@@ -31,9 +31,9 @@ const saveData = (data) => {
   walletInfoPoint.uintField('active_rolls', data.wallet_info.active_rolls);
   walletInfoPoint.uintField('candidate_rolls', data.wallet_info.candidate_rolls);
   walletInfoPoint.uintField('final_rolls', data.wallet_info.final_rolls);
-  walletInfoPoint.uintField('production_ok', data.wallet_info.production_ok);
-  walletInfoPoint.uintField('production_nok', data.wallet_info.production_nok);
-  walletInfoPoint.floatField('production_ok_ratio', data.wallet_info.production_ok_ratio);
+  walletInfoPoint.uintField('cycle_infos_ok', data.wallet_info.cycle_infos_ok);
+  walletInfoPoint.uintField('cycle_infos_nok', data.wallet_info.cycle_infos_nok);
+  walletInfoPoint.floatField('cycle_infos_ok_ratio', data.wallet_info.cycle_infos_ok_ratio);
 
   const writeApi = client.getWriteApi(org, bucket);
   writeApi.writePoints([statusPoint, walletInfoPoint]);
