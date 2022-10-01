@@ -13,6 +13,10 @@ const client = new InfluxDB({
 const saveData = (data) => {
   logger.debug(`Saving the data: ${JSON.stringify(data)}`);
 
+  const stakersPoint = new Point('stakers');
+
+  stakersPoint.uintField('stakers_count', data.stakers.stakers_count);
+
   const statusPoint = new Point('status');
 
   statusPoint.uintField('connected_node_count', data.status.connected_node_count);
@@ -36,7 +40,7 @@ const saveData = (data) => {
   walletInfoPoint.floatField('cycle_infos_ok_ratio', data.wallet_info.cycle_infos_ok_ratio);
 
   const writeApi = client.getWriteApi(org, bucket);
-  writeApi.writePoints([statusPoint, walletInfoPoint]);
+  writeApi.writePoints([stakersPoint, statusPoint, walletInfoPoint]);
 
   writeApi
     .close()
